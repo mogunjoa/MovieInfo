@@ -12,13 +12,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.mogun.movieinfoapp.ui.theme.MovieInfoAppTheme
+import com.mogun.movieinfoapp.ui.theme.color.ColorSet
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MovieInfoAppTheme {
+            MovieInfoAppTheme(
+                myColors = ColorSet.Red,
+            ) {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
@@ -41,7 +44,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    MovieInfoAppTheme {
+    MovieInfoAppTheme(
+        myColors = ColorSet.Red,
+    ) {
         Greeting("Android")
     }
 }
