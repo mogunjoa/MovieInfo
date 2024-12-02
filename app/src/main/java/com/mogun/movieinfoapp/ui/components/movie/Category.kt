@@ -1,6 +1,5 @@
 package com.mogun.movieinfoapp.ui.components.movie
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
