@@ -16,9 +16,9 @@
 
         <action
             android:id="@+id/action_feed_to_info"
+            app:destination="@id/info_fragment"
             app:launchSingleTop="true"/>
 
-        <!--            app:destination="@id/detail_fragment"-->
     </fragment>
 
     <fragment

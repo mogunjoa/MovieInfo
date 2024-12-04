@@ -51,6 +51,7 @@ fun BaseDialogPopup(
                     .fillMaxWidth()
                     .background(Color.Transparent)
                     .padding(
+                        top = Paddings.xlarge,
                         start = Paddings.xlarge,
                         end = Paddings.xlarge,
                         bottom = Paddings.xlarge,

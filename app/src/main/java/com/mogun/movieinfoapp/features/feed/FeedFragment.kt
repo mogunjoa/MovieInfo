@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.ComposeView
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.mogun.movieinfoapp.BaseFragment
 import com.mogun.movieinfoapp.features.feed.presentation.output.FeedUiEffect
 import com.mogun.movieinfoapp.features.feed.presentation.screen.FeedScreen
 import com.mogun.movieinfoapp.features.feed.presentation.viewmodel.FeedViewModel
@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class FeedFragment: Fragment() {
+class FeedFragment: BaseFragment() {
 
     val viewModel: FeedViewModel by viewModels()
 
@@ -34,10 +34,16 @@ class FeedFragment: Fragment() {
         observeUiEffects()
         return ComposeView(requireContext()).apply {
             setContent {
-                MovieInfoAppTheme {
+                MovieInfoAppTheme(
+                    themeState = themeViewModel.themeState.collectAsState()
+                ) {
                     FeedScreen(
                         feedStateHolder = viewModel.output.feedState.collectAsState(),
                         input = viewModel.input,
+                        buttonColor = themeViewModel.nextColorState.collectAsState(),
+                        changeAppColor = {
+                            themeViewModel.toggleColorSet()
+                        }
                     )
                 }
             }
